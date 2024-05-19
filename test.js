@@ -8,6 +8,7 @@ const functions = require('./functions');
 	let dt = {part: "Hello, what time is it in Yogyakarta?", functions:functions};
 	while(true){
 		const response = (await handler.generate(dt));
+		GeminiHandler.models.
 		console.log(response)
 		if(response.next) dt = response.next;
 		else break;
