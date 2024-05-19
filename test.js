@@ -1,16 +1,14 @@
 const { GeminiHandler } = require("./lib/engine");
-const config = require('./config');
-const functions = require('./functions');
+const config = require('./lib/config');
+const functions = require('./lib/functions');
 
 
 (async()=>{
 	const handler = new GeminiHandler(config.APIKeys);
-	let dt = {part: "Hello, what time is it in Yogyakarta?", functions:functions};
-	while(true){
-		const response = (await handler.generate(dt));
-		GeminiHandler.models.
-		console.log(response)
-		if(response.next) dt = response.next;
-		else break;
-	}
+	let response = await handler.generate({model:GeminiHandler.models["gemini-1.5-flash-latest"].name,parts: [{text:"Hello."},{text:"Who are you?"}], functions:functions, safetySettings: config.safetySettings, systemInstruction: [{text:"You are Neuxbane, an AI that take over programmers tasks."}, {text:"Please use function calling to do your work!"}, {text:"Once it's done, please give the summary!"}]});
+	console.log(response.text, response.functionCalls);
+	while(response.next){
+		response = await handler.generate(response.next);
+		console.log(response.text, response.functionCalls);
+	};
 })();
