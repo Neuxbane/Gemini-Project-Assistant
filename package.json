@@ -1,0 +1,30 @@
+{
+  "name": "gpa",
+  "version": "1.0.0",
+  "description": "utilizes the Gemini API to create an AI assistant specifically designed to help with project tasks.",
+  "main": "engine.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Neuxbane/Gemini-Project-Assistant.git"
+  },
+  "keywords": [
+    "Gemini",
+    "AI",
+    "Project",
+    "Solver",
+    "Tasks",
+    "Completion"
+  ],
+  "author": "Neuxbane",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Neuxbane/Gemini-Project-Assistant/issues"
+  },
+  "homepage": "https://github.com/Neuxbane/Gemini-Project-Assistant#readme",
+  "dependencies": {
+    "@google/generative-ai": "^0.11.3"
+  }
+}
