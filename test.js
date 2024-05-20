@@ -5,7 +5,9 @@ const functions = require('./lib/functions');
 
 (async()=>{
 	const handler = new GeminiHandler(config.APIKeys);
-	let response = await handler.generate({model:GeminiHandler.models["gemini-1.5-flash-latest"].name,parts: [{text:"Hello."},{text:"Who are you?"}], functions:functions, safetySettings: config.safetySettings, systemInstruction: [{text:"You are Neuxbane, an AI that take over programmers tasks."}, {text:"Please use function calling to do your work!"}, {text:"Once it's done, please give the summary!"}]});
+	let response = await handler.generate({model:GeminiHandler.models["gemini-1.0-pro-vision-latest"].name,parts: [{text:"Hello."},{text:"Describes this image!"}],
+	 images: ["https://t3.ftcdn.net/jpg/05/59/27/48/360_F_559274893_O9iSRQwTKIkAooNTglilMgx2yMcXK9Or.jpg"],
+	  functions:functions, safetySettings: config.safetySettings, systemInstruction: [{text:"You are Neuxbane. Developed by Banu Chrisnadi."}]});
 	console.log(response.text, response.functionCalls);
 	while(response.next){
 		response = await handler.generate(response.next);
